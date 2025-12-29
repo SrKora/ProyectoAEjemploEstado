@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -72,7 +76,8 @@ fun EstadoLayout(
             .statusBarsPadding()
             .padding(horizontal = 40.dp)
             .verticalScroll(rememberScrollState())
-            .safeDrawingPadding(),
+            .safeDrawingPadding()
+            .background(Color(255, 231, 185, 255)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -211,7 +216,14 @@ fun CampoNumero(
         onValueChange = onValueChanged,
         label = { Text(stringResource(label)) },
         keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions
+        keyboardActions = keyboardActions,
+        colors = TextFieldDefaults.colors(
+            unfocusedLabelColor = Color(147, 125, 159, 255),
+            focusedContainerColor = Color(7, 81, 255, 255),
+            unfocusedContainerColor = Color(255, 0, 94, 255),
+            focusedIndicatorColor = Color(255, 151, 0, 255),
+            unfocusedIndicatorColor = Color(0, 255, 40, 255)
+        )
     )
 }
 
